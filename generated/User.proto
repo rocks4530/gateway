@@ -1,0 +1,27 @@
+syntax = "proto3";
+package com.awesome.model;
+
+option java_multiple_files = true;
+option java_package = "com.awesome.model";
+option java_outer_classname = "UserService";
+
+import "google/api/annotations.proto";
+
+// Interface exported by the server.
+service User {
+  rpc GetName(Req) returns (Res) {
+	option (google.api.http) = {
+	    post: "/v1/model/name"
+        body: "*"
+	};
+  
+  }
+}
+
+message Req {
+  int32 id = 1;
+}
+
+message Res {
+  string name = 1;
+}
